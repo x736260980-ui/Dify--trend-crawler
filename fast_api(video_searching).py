@@ -108,4 +108,5 @@ async def get_video_comments(req: CommentRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    #uvicorn.run(app, host="0.0.0.0", port=8002)
+    # 默认绑定到 8000 端口，符合通用部署规范
+    uvicorn.run(app, host="0.0.0.0", port=8000)
