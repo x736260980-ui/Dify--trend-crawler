@@ -1,6 +1,6 @@
 # Dify--trend-crawler
 本项目是一个基于 Python 爬虫与 Dify 工作流构建的自动化舆情监测工具。通过封装定制化的数据采集接口，并结合大模型的 Web 搜索与文本分析能力，实现对目标消费趋势与早期舆情的精准感知。
-PS：项目目前仅个人使用，所以仅针对本地及内网环境进行开发与测试
+PS：项目目前仅个人使用，所以仅针对本地及内网环境进行开发与测试  
 <img width="865" height="421" alt="image" src="https://github.com/user-attachments/assets/79aab8be-fd37-4819-ba43-46b4d3653b57" />
 本工具的运行逻辑分为三个核心阶段：
 
