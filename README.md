@@ -28,7 +28,7 @@ https://github.com/Nemo2011/bilibili-api
 
 功能目标：设置专属的 LLM 节点对多源数据进行清洗、去除冗余噪音并执行情绪倾向分析。最终将零散的非结构化文本转化为结构化数据，输出针对特定目标的趋势分析与早期舆情报告。
 [结果演示示例]
-<img width="889" height="892" alt="image" src="https://github.com/user-attachments/assets/fee205ea-c58d-4050-9370-6cd6fd4109de" />
+<img width="600" height="620" alt="image" src="https://github.com/user-attachments/assets/fee205ea-c58d-4050-9370-6cd6fd4109de" />
 
 Tips：本项目使用的Fastapi可以合并成一个，这样更规范，但考虑到复用性和拆解性，这里并未合并，也是为了以后升级更方便，避免反复修改
 
