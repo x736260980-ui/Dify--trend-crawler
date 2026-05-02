@@ -1,0 +1,75 @@
+openapi: 3.1.0
+info:
+  title: Bilibili 多维舆情智能挂载工具
+  version: 1.1.0
+  description: 专为Agent设计的B站视频分析工具箱。支持自主调控弹幕抓取条数与评论挖掘深度。
+servers:
+  #- url: http://host.docker.internal:8000 此处地址与py文件保持一致，为本地地址
+    description: Dify 容器化部署地址
+paths:
+  /api/bili/meta:
+    post:
+      summary: 获取视频热度与基础元数据
+      description: 当你需要判断一个视频的播放量、点赞数、投币比例，或是UP主信息时，调用此接口。
+      operationId: get_video_meta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bvid:
+                  type: string
+                  description: 视频的BV号，例如 "BV1fqXZBoEty"
+              required:
+                - bvid
+      responses:
+        "200":
+          description: 成功返回基础数据
+  /api/bili/danmaku:
+    post:
+      summary: 获取视频实时弹幕（情绪因子）
+      description: 分析观众实时情绪时调用。你可以通过 max_limit 参数精确控制需要的弹幕样本数量。
+      operationId: get_video_danmaku
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bvid:
+                  type: string
+                  description: 视频的BV号
+                max_limit:
+                  type: integer
+                  description: 需要抓取的弹幕数量上限，默认为200。若需大规模情绪样本可调大此数值。
+              required:
+                - bvid
+      responses:
+        "200":
+          description: 成功返回弹幕列表
+  /api/bili/comments:
+    post:
+      summary: 获取深挖评论区（深度痛点与观点）
+      description: 分析观众逻辑反馈时调用。你可以通过 max_pages 参数自主决定挖掘深度。
+      operationId: get_video_comments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bvid:
+                  type: string
+                  description: 视频的BV号
+                max_pages:
+                  type: integer
+                  description: 向下挖掘的评论页数，1页约20条。默认为3，如果需要深挖可以设定为5或10。
+              required:
+                - bvid
+      responses:
+        "200":
+          description: 成功返回结构化评论列表
