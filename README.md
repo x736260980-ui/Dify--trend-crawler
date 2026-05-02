@@ -1,6 +1,6 @@
 # Dify--trend-crawler
 本项目是一个基于 Python 爬虫与 Dify 工作流构建的自动化舆情监测工具。通过封装定制化的数据采集接口，并结合大模型的 Web 搜索与文本分析能力，实现对目标消费趋势与早期舆情的精准感知。
-<img width="865" height="421" alt="image" src="https://github.com/user-attachments/assets/e38c0c9b-5a4d-47b8-8946-0d6e9cce85b5" />
+<img width="865" height="421" alt="image" src="https://github.com/user-attachments/assets/79aab8be-fd37-4819-ba43-46b4d3653b57" />
 本工具的运行逻辑分为三个核心阶段：
 
 1. 数据采集与接口封装
@@ -26,7 +26,8 @@
 操作逻辑：在 Dify 画布中搭建 LLM 分析工作流。将 FastAPI 接口抓取的“社交语料”与 Web 搜索工具获取的“网页文本”共同接入工作流。
 
 功能目标：设置专属的 LLM 节点对多源数据进行清洗、去除冗余噪音并执行情绪倾向分析。最终将零散的非结构化文本转化为结构化数据，输出针对特定目标的趋势分析与早期舆情报告。
-
+[结果演示示例]
+<img width="889" height="892" alt="image" src="https://github.com/user-attachments/assets/fee205ea-c58d-4050-9370-6cd6fd4109de" />
 ⚠️ 免责声明：本项目仅供学术研究、分析逻辑验证及大模型工程化学习使用。请严格遵守目标平台的相关协议与反爬虫规范，合理控制请求频次，禁止用于任何非法数据采集或商业牟利活动。
 
 📄 开源协议MIT License
