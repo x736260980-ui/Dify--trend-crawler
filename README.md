@@ -5,7 +5,8 @@
 
 1. 数据采集与接口封装
 
-为解决动态网页的数据获取难题，底层采用 Python 结合 DrissionPage 工具应对基础反爬限制。这里使用的是Nemo2011的API：https://github.com/Nemo2011/bilibili-api，十分感谢
+为解决动态网页的数据获取难题，底层采用 Python 结合 DrissionPage 工具应对基础反爬限制。这里使用的是Nemo2011大佬的API，十分感谢：
+https://github.com/Nemo2011/bilibili-api
 
 操作逻辑：先根据指引部署好自己的cookie，通过监听视频平台（目前为b站，后续会继续跟进）的网络请求接口，自动化提取视频弹幕与核心评论内容（单次抓取量可达 900+ 条）。
 
