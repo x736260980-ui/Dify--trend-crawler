@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: 抖音评论底座API
+  description: 基于 a_bogus 底层逆向签名进程池的高速抖音评论抓取服务。
+  version: 1.0.0
+servers:
+  - url: 
+    description: 抖音底层协议节点
+paths:
+  /api/dy/comments:
+    post:
+      summary: 提取视频高赞评论
+      description: 使用底层签名协议直接请求数据接口，高速且稳定地获取抖音视频的用户评论。
+      operationId: fetch_douyin_comments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aweme_id:
+                  type: string
+                  description: 抖音视频的纯数字 ID（例如 7200000000000000000）
+                max_comments:
+                  type: integer
+                  description: 期望获取的最大评论数量，默认100
+                  default: 100
+              required:
+                - aweme_id
+      responses:
+        '200':
+          description: 成功返回结构化的评论数据数组
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  count:
+                    type: integer
+                    description: 实际成功解析并返回的评论数量
+                  data:
+                    type: array
+                    description: 评论核心数据列表
+                    items:
+                      type: object
+                      properties:
+                        nickname:
+                          type: string
+                          description: 留言用户的昵称
+                        digg_count:
+                          type: integer
+                          description: 该条评论的获赞数，用于评估热度权重
+                        text:
+                          type: string
+                          description: 评论的具体文本内容
+                        reply_total:
+                          type: integer
+                          description: 该条评论下属的子回复数量

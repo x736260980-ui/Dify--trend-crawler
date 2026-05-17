@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: B站全量并发舆情探针
+  description: 运用底层并发机制，为 Dify Agent 高效提供多组 B 站视频的基础信息、弹幕与深层评论全量数据。
+  version: 3.0.0
+servers:
+  # 请确保替换为你的云服务器真实公网IP
+  - url: 
+    description: B站并发舆情节点
+paths:
+  /api/bili/batch-full:
+    post:
+      summary: 批量并发获取多视频全量数据
+      description: 传入一组BVID列表，利用异步协程同时获取多个视频的元数据、弹幕列表及多页评论区留言。这是集成度最高的终极探测接口。
+      operationId: get_batch_full_bili_data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bvids:
+                  type: array
+                  items:
+                    type: string
+                  description: 包含多个目标视频 BVID 的字符串数组
+                max_limit:
+                  type: integer
+                  description: 提取的最大弹幕数量，默认 200
+                  default: 200
+                max_pages:
+                  type: integer
+                  description: 评论翻页的向下探测深度，默认 3 页
+                  default: 3
+              required:
+                - bvids
+      responses:
+        '200':
+          description: 成功返回多个视频的全量结构化数据数组

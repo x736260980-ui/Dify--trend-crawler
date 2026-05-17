@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: 抖音舆情探针API
+  description: 基于物理浏览器模拟与底层接口拦截的抖音搜索数据抓取服务。
+  version: 1.0.0
+servers:
+  - url: 
+    description: 抖音探针节点
+paths:
+  /api/dy/search:
+    post:
+      summary: 搜索抖音视频舆情
+      description: 模拟人类交互进行视频关键词搜索，自动过滤冗余数据并提取核心业务字段（包含视频ID、作者、点赞量及文本描述）。
+      operationId: search_douyin_videos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyword:
+                  type: string
+                  description: 需要监测的抖音搜索关键词。
+                max_pages:
+                  type: integer
+                  description: 模拟向下滚动的次数（深度），控制抓取的数据量，默认为3。
+                  default: 3
+                headless:
+                  type: boolean
+                  description: 是否开启无头模式。在云端首次运行需扫码登录时设为 false，持久化完成后建议设为 true。
+                  default: false
+              required:
+                - keyword
+      responses:
+        '200':
+          description: 成功返回清洗后的视频信息列表
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  count:
+                    type: integer
+                    description: 实际抓取到的有效视频数量
+                  data:
+                    type: array
+                    description: 视频舆情数据列表
+                    items:
+                      type: object
+                      properties:
+                        video_id:
+                          type: string
+                          description: 抖音作品的唯一数字ID
+                        author:
+                          type: string
+                          description: 视频发布者昵称
+                        likes:
+                          type: integer
+                          description: 视频点赞数量（用于衡量热度）
+                        description:
+                          type: string
+                          description: 视频的文案描述
