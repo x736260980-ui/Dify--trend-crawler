@@ -1,25 +1,32 @@
 # Dify--trend-crawler
-本项目是一个基于 Python 爬虫与 Dify 工作流构建的自动化舆情监测工具。通过封装定制化的数据采集接口，并结合大模型的 Web 搜索与文本分析能力，实现对目标消费趋势与早期舆情的精准感知。  
-PS：项目目前仅个人使用，所以仅针对本地及内网环境进行开发与测试  
 
-# 目前v2已经完成，相较于v1的chatflow直接采用agent方式简化操作
+本项目是一个基于 **Python 爬虫 + Dify 工作流** 构建的自动化舆情监测工具。通过封装定制化的数据采集接口，并结合大模型的 Web 搜索与文本分析能力，实现对目标消费趋势与早期舆情的精准感知。
 
-# 优化方向以及不足：
-原先的api调用速度过慢，一次仅能处理一个视频，并发升级后可以多路并行，大大提高了运行效率。
-
-TIPs：
-dy平台的搜索风控过于严格，这里采用本地浏览器模拟的方式代替，评论拉取参考了大佬https://github.com/cv-cat/DouYin_Spider 的代码，谢谢！
-
-
-Tavily搜索作为工具给agent调用会报错，这里封装为简易工作流后再次调用，具体操作可自行布置
-
-# 舆情趋势探针 v2 — Agent 版
-
-基于 **Dify Agent** 架构的视频舆情分析系统，支持 **抖音** 和 **B站** 双平台视频搜索、评论抓取与情绪分析。v2 从 v1 的 Chatflow 升级为 **Agent 模式**，由 DeepSeek 模型驱动，动态决策工具调用链路，生成结构化的商业舆情报告。
+> **注：** 项目目前仅个人使用，所以仅针对本地及内网环境进行开发与测试。
 
 ---
 
-## 架构概览
+## 版本演进 v1 → v2 → v3
+
+| 特性 | v1 (Chatflow) | v2 (Agent) | v3 (辩论交叉验证) |
+|------|---------------|------------|-------------------|
+| 架构模式 | 固定流程 Chatflow | 动态决策 Agent | 双 Agent 辩论 + LLM 裁判 |
+| 工作流类型 | Chatflow | Agent | Advanced Chat |
+| 模型 | — | DeepSeek Chat | DeepSeek Chat |
+| 工具调度 | 预设节点链路 | Agent 自主决定调用顺序 | Agent A / B 各自调度 |
+| 分析方式 | 固定流程 | 单次推理 | 多轮交叉验证 |
+| 准确性 | 依赖流程设计 | 依赖单次推理质量 | 多方博弈，结果更客观 |
+| 历史追溯 | 无 | 无 | 完整辩论过程可追溯 |
+| 图表生成 | 需额外节点处理 | Agent 直接调用 ECharts | Agent 直接调用 ECharts |
+| 联网搜索 | 不支持 | 集成 Tavily 搜索 | 集成 Tavily 搜索 |
+
+### v1 — Chatflow（已归档）
+
+v1 采用 Dify Chatflow 模式，通过预设节点链路组成固定 DAG 流程，扩展需修改整个 DAG。
+
+### v2 — Agent 模式
+
+v2 从 Chatflow 升级为 **Agent 模式**，由 DeepSeek 模型驱动，动态决策工具调用链路。
 
 ```
 用户输入视频 ID (抖音纯数字 / B站 BV号)
@@ -49,42 +56,113 @@ Tavily搜索作为工具给agent调用会报错，这里封装为简易工作流
    舆情分析报告 (含情绪分布饼图)
 ```
 
-## 与 v1 的关键区别
+### v3 — 辩论交叉验证（当前）
 
-| 特性 | v1 (Chatflow) | v2 (Agent) |
-|------|---------------|------------|
-| 架构模式 | 固定流程 Chatflow | 动态决策 Agent |
-| 模型 | — | DeepSeek Chat |
-| 工具调度 | 预设节点链路 | Agent 自主决定调用顺序与参数 |
-| 灵活性 | 固定流程，扩展需改 DAG | 通过添加 tool 即可扩展能力 |
-| 图表生成 | 需额外节点处理 | Agent 直接调用 ECharts 工具 |
-| 联网搜索 | 不支持 | 集成 Tavily 搜索 |
+v3 从单 Agent 升级为 **双 Agent 辩论交叉验证架构**，两个独立 Agent 对同一舆情数据进行多轮交叉验证，最后由 LLM 裁判综合评判。
 
-## 核心功能
+```
+用户输入（关键词 / 视频 ID）
+        │
+        ▼
+┌─────────────────────────────────────────────┐
+│            辩论交叉验证工作流                  │
+│                                              │
+│   ┌──────────┐      ┌──────────┐            │
+│   │  Agent A  │      │  Agent B  │           │
+│   │  (正方)   │◄────►│  (反方)   │           │
+│   └────┬─────┘      └────┬─────┘            │
+│        │                  │                  │
+│        ▼                  ▼                  │
+│   ┌────────────────────────────────────┐     │
+│   │         LLM 裁判 (最终裁决)         │     │
+│   └────────────────────────────────────┘     │
+│                                              │
+│   ← ← ← 多轮循环 (可配置轮数) ← ← ←        │
+└─────────────────────────────────────────────┘
+        │
+        ▼
+   最终舆情分析报告
+```
 
-- **双平台搜索**：抖音（浏览器模拟）、B站（官方 API）
-- **评论/弹幕抓取**：抖音 a_bogus 签名注入、B站异步并发获取
-- **多维度数据融合**：视频元数据 + 弹幕瞬时情绪 + 评论长文本逻辑
-- **情绪分析**：正面/负面/中立分类，自动生成饼图
-- **联网补充**：通过 Tavily 搜索获取外部背景信息
+双 Agent 在辩论过程中可调用的 API 服务：
+
+| API | 功能 |
+|-----|------|
+| `dy搜索api` | 抖音视频搜索（浏览器模拟） |
+| `dy评论api` | 抖音评论抓取 |
+| `bilibili_ 搜索api` | B站视频搜索 |
+| `bilibili_ 评论api` | B站评论/弹幕抓取 |
+| `Tavily 搜索` | 联网搜索（封装为简易工作流调用） |
+
+#### 工作流节点
+
+| 节点 | 作用 |
+|------|------|
+| 用户输入 | 接收关键词或视频 ID |
+| 循环 | 控制辩论轮次 |
+| Agent A | 正方观点，对数据进行第一轮分析 |
+| Agent B | 反方观点，对 A 的分析进行质询与补充 |
+| LLM 裁判 | 综合 A 和 B 的辩论内容，给出最终评判 |
+| 条件分支 | 判断是否达到最大轮次，决定继续辩论或退出 |
+| 代码节点 | 清洗 Agent 输出中的 `<think>` 标签（详见下方说明） |
+| 变量赋值 | 追踪每轮的辩论历史（history_A / history_B） |
+
+> **数据清洗说明**：DeepSeek 输出中会包含 `<think>...</think>` 标签，为保留纯文本内容，工作流中通过代码节点进行清洗。该节点在 Agent A、Agent B、LLM 裁判三处输出后各有一个，代码一致：
+>
+> ```python
+> import re
+>
+> def main(text: str) -> str:
+>     cleaned = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
+>     return {"result": cleaned.strip()}
+> ```
+
+---
 
 ## 项目结构
 
 ```
-v2/
-├── 视频分析助手.yml          # Dify App 配置 (Agent 定义)
-├── dy搜索api.py              # 抖音搜索微服务 (端口 8005)
-├── dy评论api.py              # 抖音评论微服务 (端口 8006)
-├── bilibili_ 搜索ap.py       # B站搜索微服务 (端口 8003)
-├── bilibili_ 评论api.py      # B站全量数据微服务 (端口 8002)
-├── dy搜索schema.yml          # 抖音搜索 OpenAPI Schema
-├── dy评论schema.yml          # 抖音评论 OpenAPI Schema
-├── bilibili_ 搜索schema.yml  # B站搜索 OpenAPI Schema
-├── bilibili_ 评论schema.yml  # B站全量数据 OpenAPI Schema
-└── a_bogus_server.js         # 抖音签名计算服务 (Node.js)
+./
+├── v1/                           【已归档】
+│   └── Chatflow 模式，固定流程 DAG 编排
+│
+├── v2/                           【Agent 模式】
+│   ├── 视频分析助手.yml          # Dify Agent 工作流 (DeepSeek)
+│   ├── dy搜索api.py              # 抖音搜索微服务
+│   ├── dy评论api.py              # 抖音评论微服务
+│   ├── dy搜索schema.yml          # 抖音搜索 OpenAPI Schema
+│   ├── dy评论schema.yml          # 抖音评论 OpenAPI Schema
+│   ├── bilibili_ 搜索api.py      # B站搜索微服务
+│   ├── bilibili_ 评论api.py      # B站评论微服务
+│   ├── bilibili_ 搜索schema.yml  # B站搜索 OpenAPI Schema
+│   ├── bilibili_ 评论schema.yml  # B站评论 OpenAPI Schema
+│   
+│
+├── v3/                           【辩论交叉验证 ← 当前】
+│   ├── （舆情检索分析）辩论交叉验证.yml  # 核心：Dify 辩论工作流
+│   ├── dy搜索api.py              # 抖音搜索微服务
+│   ├── dy评论api.py              # 抖音评论微服务
+│   ├── dy搜索schema.yml          # 抖音搜索 OpenAPI Schema
+│   ├── dy评论schema.yml          # 抖音评论 OpenAPI Schema
+│   ├── bilibili_ 搜索api.py      # B站搜索微服务
+│   ├── bilibili_ 评论api.py      # B站评论微服务
+│   ├── bilibili_ 搜索schema.yml  # B站搜索 OpenAPI Schema
+│   ├── bilibili_ 评论schema.yml  # B站评论 OpenAPI Schema
+│
+└── README.md                     
 ```
 
-### 环境变量
+---
+
+## 技术栈
+
+- **Dify Workflow** — Chatflow / Agent / Advanced Chat 流程编排
+- **DeepSeek Chat** — 驱动 Agent 决策与 LLM 裁判
+- **FastAPI** — 各微服务 API 框架
+- **DrissionPage** — 抖音浏览器模拟（绕过搜索风控）
+- **httpx / aiohttp** — B站 API 请求与并发数据拉取
+
+## 环境变量
 
 抖音服务需要配置 `.env` 文件：
 
@@ -92,63 +170,44 @@ v2/
 DY_COOKIES=your_douyin_cookies_here
 ```
 
-## Dify Agent 配置
+> 抖音平台的搜索风控较为严格，这里采用本地浏览器模拟（Chrome 远程调试模式）代替。评论拉取参考了 [cv-cat/DouYin_Spider](https://github.com/cv-cat/DouYin_Spider) 的代码。
 
-`视频分析助手.yml` 是完整的 Dify App 导入文件，包含：
+> Tavily 搜索作为工具给 Agent 调用会报错，这里封装为简易工作流后再次调用。
 
-- **模型**：DeepSeek Chat（temperature 0.2，max_tokens 8192）
-- **提示词**：角色设定为"生态与舆情商业分析专家"
-- **工具集**：6 个工具（抖音搜索/评论、B站搜索/全量、ECharts 饼图、Tavily 搜索）
+---
 
-### Agent 工作流
-
-1. 用户输入视频 ID（抖音纯数字 或 B站 BV 号）
-2. Agent 根据 ID 格式自动判断平台
-3. 自主决定工具调用顺序与参数（如抓取深度、评论数量）
-4. 交叉验证多源数据，去噪提纯
-5. 输出结构化分析报告，包含情绪分布饼图
-
-### 输出格式
-
-```
-1. 核心数据盘点 — 互动数据概览
-2. 观众情绪画像 — 正面/负面/中立数量及占比
-3. 情绪分布图表 — ECharts 饼图
-4. 深度洞察与痛点 — 代表性评论原文引用
-```
-
-## 快速开始
+## 快速开始（v3）
 
 ### 1. 启动微服务
 
+先进入 v3 目录，启动 Chrome 远程调试模式（端口 9222），然后分别启动各服务：
+
 ```bash
+cd v3
+
 # B站服务
-python bilibili_\ 搜索ap.py
-python bilibili_\ 评论api.py
+python "bilibili_ 搜索api.py"
+python "bilibili_ 评论api.py"
 
 # 抖音服务（需要 Chrome）
-python dy搜索api.py
-python dy评论api.py
+python "dy搜索api.py"
+python "dy评论api.py"
 ```
 
-### 2. 导入 Dify Agent
+### 2. 导入 Dify 工作流
 
 - 打开 Dify 控制台
-- 导入 `视频分析助手.yml`
+- 导入 `v3/（舆情检索分析）辩论交叉验证.yml`
 - 配置各工具对应的微服务地址
 
 ### 3. 使用
 
-在 Dify Agent 对话框中输入视频 ID：
+在 Dify 对话界面输入关键词即可开始辩论交叉验证分析。
 
-- 抖音：`7200000000000000000`
-- B站：`BV1wXxXxXxXx`
+---
 
+> Tips：各 API 服务使用 FastAPI 独立部署，未合并为一个服务。这是为了保持复用性和拆解性，方便后续升级时单独修改，避免牵一发而动全身。
 
-Tips：本项目使用的Fastapi可以合并成一个，这样更规范，但考虑到复用性和拆解性，这里并未合并，也是为了以后升级更方便，避免反复修改
+⚠️ **免责声明**：本项目仅供学术研究、分析逻辑验证及大模型工程化学习使用。请严格遵守目标平台的相关协议与反爬虫规范，合理控制请求频次，禁止用于任何非法数据采集或商业牟利活动。
 
-⚠️ 免责声明：本项目仅供学术研究、分析逻辑验证及大模型工程化学习使用。请严格遵守目标平台的相关协议与反爬虫规范，合理控制请求频次，禁止用于任何非法数据采集或商业牟利活动。
-
-📄 开源协议MIT License
-
-希望对你有所帮助
+📄 **开源协议**：MIT License
