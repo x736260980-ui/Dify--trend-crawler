@@ -8,9 +8,9 @@ from bilibili_api.utils.aid_bvid_transformer import bvid2aid
 
 # ================= 凭证配置区域 =================
 # 从底稿中提取并注入的有效 Cookie 凭证
-SESSDATA = "031ca7b5%2C1792060943%2C98d62%2A42CjA4Uv9uTY5gXJWhfaqSGYgrRFEva3EJdInrPrJU0U7nNMSHlAdHUgjaqX-DndiEL6USVm5ueGFuX3QzdU9PUXVNcmNubERTdi0xcThYNjZaZVAyU1haaVhrdllEVmJQNl9iZWNkMllpTzIydWxTeFlIY0FVSzdsX1dwMkc4Q25zaFJRQ0d6ei1BIIEC"
-BILI_JCT = "a8b99dc998e960fe312cafadb6e06af9"
-BUVID3 = "7750018E-6A75-E944-6097-B1D637749DC506926infoc"
+SESSDATA = ""
+BILI_JCT = ""
+BUVID3 = ""
 
 credential = Credential(sessdata=SESSDATA, bili_jct=BILI_JCT, buvid3=BUVID3)
 
