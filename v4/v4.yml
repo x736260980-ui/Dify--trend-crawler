@@ -1,0 +1,2735 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: v4
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.53@a0dfb462961a03c6a6415d4185043185b01017c64da93cf82a9e5ecaf59f8ed0
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 8ba38f02-bdb5-4425-9131-d6368e2625cf
+    name: similiar
+    selector:
+    - conversation
+    - similiar
+    value: ''
+    value_type: string
+  - description: 外部获取的舆情参考数据
+    id: ee09ffe6-879c-4750-9ab9-e9302a7e4fcc
+    name: web_data
+    selector:
+    - conversation
+    - web_data
+    value: []
+    value_type: array[string]
+  - description: ''
+    id: e358b7cf-5de3-42c6-8fa6-a03c9dc22496
+    name: round
+    selector:
+    - conversation
+    - round
+    value: 1
+    value_type: integer
+  - description: B的历史发言
+    id: 953bad6b-ef6b-4fd4-894b-4f11af7505a9
+    name: history_B
+    selector:
+    - conversation
+    - history_B
+    value: []
+    value_type: array[string]
+  - description: A的历史发言
+    id: e1af0c33-b95b-43b8-806d-2f324cfd39cf
+    name: history_A
+    selector:
+    - conversation
+    - history_A
+    value: []
+    value_type: array[string]
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: loop-start
+        targetType: if-else
+      id: 1778849053182start-source-1778851964027-target
+      selected: false
+      source: 1778849053182start
+      sourceHandle: source
+      target: '1778851964027'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: answer
+        targetType: assigner
+      id: 1778852573025-source-1778850322710-target
+      selected: false
+      source: '1778852573025'
+      sourceHandle: source
+      target: '1778850322710'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: if-else
+        targetType: template-transform
+      id: 1778851964027-false-1778911004368-target
+      selected: false
+      source: '1778851964027'
+      sourceHandle: 'false'
+      target: '1778911004368'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: code
+        targetType: template-transform
+      id: 1778850918334-source-1778911224815-target
+      selected: false
+      source: '1778850918334'
+      sourceHandle: source
+      target: '1778911224815'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: template-transform
+        targetType: answer
+      id: 1778911004368-source-1778911330655-target
+      selected: false
+      source: '1778911004368'
+      sourceHandle: source
+      target: '1778911330655'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: template-transform
+        targetType: answer
+      id: 1778911224815-source-1778911341800-target
+      selected: false
+      source: '1778911224815'
+      sourceHandle: source
+      target: '1778911341800'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: if-else
+        targetType: loop-end
+      id: 1778851964027-6860eed1-2f64-4f6f-864c-0d8a805302dd-1778852017335-target
+      selected: false
+      source: '1778851964027'
+      sourceHandle: 6860eed1-2f64-4f6f-864c-0d8a805302dd
+      target: '1778852017335'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: code
+        targetType: answer
+      id: 1778912285892-source-1778852501860-target
+      selected: false
+      source: '1778912285892'
+      sourceHandle: source
+      target: '1778852501860'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: code
+        targetType: answer
+      id: 1778912395279-source-1778852573025-target
+      selected: false
+      source: '1778912395279'
+      sourceHandle: source
+      target: '1778852573025'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: assigner
+      id: 1778848925904-source-1778913444875-target
+      selected: false
+      source: '1778848925904'
+      sourceHandle: source
+      target: '1778913444875'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: answer
+        targetType: assigner
+      id: 1778852501860-source-1779112803992-target
+      selected: false
+      source: '1778852501860'
+      sourceHandle: source
+      target: '1779112803992'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: assigner
+        targetType: code
+      id: 1779112803992-source-1778850918334-target
+      selected: false
+      source: '1779112803992'
+      sourceHandle: source
+      target: '1778850918334'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: assigner
+        targetType: loop
+      id: 1779709674301-source-1778849053182-target
+      selected: false
+      source: '1779709674301'
+      sourceHandle: source
+      target: '1778849053182'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: answer
+      id: 1778913444875-source-1779709815367-target
+      selected: false
+      source: '1778913444875'
+      sourceHandle: source
+      target: '1779709815367'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: agent
+      id: 1779709815367-source-1779708371864-target
+      selected: false
+      source: '1779709815367'
+      sourceHandle: source
+      target: '1779708371864'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: agent
+      id: 1779709815367-source-17797086943050-target
+      selected: false
+      source: '1779709815367'
+      sourceHandle: source
+      target: '17797086943050'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: llm
+        targetType: code
+      id: 1779709884047-source-1778912285892-target
+      selected: false
+      source: '1779709884047'
+      sourceHandle: source
+      target: '1778912285892'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: answer
+        targetType: llm
+      id: 1778911330655-source-1779709884047-target
+      selected: false
+      source: '1778911330655'
+      sourceHandle: source
+      target: '1779709884047'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: llm
+        targetType: code
+      id: 1779710192858-source-1778912395279-target
+      selected: false
+      source: '1779710192858'
+      sourceHandle: source
+      target: '1778912395279'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        sourceType: answer
+        targetType: llm
+      id: 1778911341800-source-1779710192858-target
+      selected: false
+      source: '1778911341800'
+      sourceHandle: source
+      target: '1779710192858'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: assigner
+      id: 1779713128678-source-1779709674301-target
+      selected: false
+      source: '1779713128678'
+      sourceHandle: source
+      target: '1779709674301'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: code
+      id: 1779708371864-source-17797142855370-target
+      selected: false
+      source: '1779708371864'
+      sourceHandle: source
+      target: '17797142855370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: template-transform
+      id: 17797142855370-source-1779713128678-target
+      selected: false
+      source: '17797142855370'
+      sourceHandle: source
+      target: '1779713128678'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: code
+      id: 17797086943050-source-17797142907440-target
+      selected: false
+      source: '17797086943050'
+      sourceHandle: source
+      target: '17797142907440'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: template-transform
+      id: 17797142907440-source-1779713128678-target
+      selected: false
+      source: '17797142907440'
+      sourceHandle: source
+      target: '1779713128678'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1779795279704-source-17797955997470-target
+      selected: false
+      source: '1779795279704'
+      sourceHandle: source
+      target: '17797955997470'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 17797980980130-source-17789336444400-target
+      selected: false
+      source: '17797980980130'
+      sourceHandle: source
+      target: '17789336444400'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: llm
+      id: 1778850291930-source-1779795279704-target
+      selected: false
+      source: '1778850291930'
+      sourceHandle: source
+      target: '1779795279704'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: loop
+        targetType: llm
+      id: 1778849053182-source-1779879339943-target
+      selected: false
+      source: '1778849053182'
+      sourceHandle: source
+      target: '1779879339943'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1779884360229-source-17798847936830-target
+      source: '1779884360229'
+      sourceHandle: source
+      target: '17798847936830'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: agent
+      id: 1779879339943-source-1779888962881-target
+      source: '1779879339943'
+      sourceHandle: source
+      target: '1779888962881'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: assigner
+        targetType: llm
+      id: 1779889132790-source-17797980980130-target
+      source: '1779889132790'
+      sourceHandle: source
+      target: '17797980980130'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: assigner
+        targetType: llm
+      id: 1779889132790-source-1779884360229-target
+      source: '1779889132790'
+      sourceHandle: source
+      target: '1779884360229'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: code
+      id: 1779888962881-source-17799699814060-target
+      source: '1779888962881'
+      sourceHandle: source
+      target: '17799699814060'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 17799699814060-source-1779889132790-target
+      source: '17799699814060'
+      sourceHandle: source
+      target: '1779889132790'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 17789336444400-source-1779970012240-target
+      source: '17789336444400'
+      sourceHandle: source
+      target: '1779970012240'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1779970012240-source-1778850291930-target
+      source: '1779970012240'
+      sourceHandle: source
+      target: '1778850291930'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: http-request
+      id: 17797955997470-source-1779976690466-target
+      source: '17797955997470'
+      sourceHandle: source
+      target: '1779976690466'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables: []
+      height: 72
+      id: '1778848925904'
+      position:
+        x: -2795.269045834159
+        y: 847.5599361377085
+      positionAbsolute:
+        x: -2795.269045834159
+        y: 847.5599361377085
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        break_conditions: []
+        error_handle_mode: terminated
+        height: 1159
+        logical_operator: and
+        loop_count: 5
+        selected: false
+        start_node_id: 1778849053182start
+        title: 循环
+        type: loop
+        width: 1470
+      height: 1159
+      id: '1778849053182'
+      position:
+        x: -134.29766410949463
+        y: 1140.0839712421437
+      positionAbsolute:
+        x: -134.29766410949463
+        y: 1140.0839712421437
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1470
+      zIndex: 1
+    - data:
+        desc: ''
+        isInLoop: true
+        selected: false
+        title: ''
+        type: loop-start
+      draggable: false
+      height: 48
+      id: 1778849053182start
+      parentId: '1778849053182'
+      position:
+        x: 60
+        y: 148
+      positionAbsolute:
+        x: -74.29766410949463
+        y: 1288.0839712421437
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-loop-start
+      width: 44
+      zIndex: 1002
+    - data:
+        answer: '{{#17789336444400.result#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: '1778850291930'
+      position:
+        x: 3672.8097881972844
+        y: 881.4486413409865
+      positionAbsolute:
+        x: 3672.8097881972844
+        y: 881.4486413409865
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        isInIteration: false
+        isInLoop: true
+        items:
+        - input_type: variable
+          operation: append
+          value:
+          - '1778912395279'
+          - result
+          variable_selector:
+          - conversation
+          - history_B
+          write_mode: over-write
+        - input_type: constant
+          operation: +=
+          value: 1
+          variable_selector:
+          - conversation
+          - round
+          write_mode: over-write
+        loop_id: '1778849053182'
+        selected: false
+        title: 变量赋值B
+        type: assigner
+        version: '2'
+      height: 109
+      id: '1778850322710'
+      parentId: '1778849053182'
+      position:
+        x: 564.4533902528701
+        y: 1019.481769335049
+      positionAbsolute:
+        x: 430.1557261433755
+        y: 2159.5657405771926
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        code: "import time\ndef main():\n    time.sleep(1)\n    return {}    \n"
+        code_language: python3
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        outputs: {}
+        selected: false
+        title: 代码执行
+        type: code
+        variables: []
+      height: 51
+      id: '1778850918334'
+      parentId: '1778849053182'
+      position:
+        x: 507.6400055849854
+        y: 619.3377723568692
+      positionAbsolute:
+        x: 373.34234147549074
+        y: 1759.4217435990129
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        answer: '{{#1778912395279.result#}}<br>'
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        selected: false
+        title: 直接回复 B
+        type: answer
+        variables: []
+      height: 102
+      id: '1778852573025'
+      parentId: '1778849053182'
+      position:
+        x: 100.9760330008935
+        y: 1026.3169938123322
+      positionAbsolute:
+        x: -33.32163110860114
+        y: 2166.400965054476
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        answer: '{{#1778912285892.result#}}<br>'
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        selected: false
+        title: 直接回复 a
+        type: answer
+        variables: []
+      height: 102
+      id: '1778852501860'
+      parentId: '1778849053182'
+      position:
+        x: 870.3638805256408
+        y: 400.32605184353883
+      positionAbsolute:
+        x: 736.0662164161461
+        y: 1540.4100230856825
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        cases:
+        - case_id: 6860eed1-2f64-4f6f-864c-0d8a805302dd
+          conditions:
+          - comparison_operator: contains
+            id: aefaeb91-a75a-41d7-b8f0-5ce9aefa3be7
+            value: '0'
+            varType: array[string]
+            variable_selector:
+            - conversation
+            - history_A
+          - comparison_operator: contains
+            id: 21ff7634-3eab-4e12-bfe2-7ba4ac86c9d6
+            value: '0'
+            varType: array[string]
+            variable_selector:
+            - conversation
+            - history_B
+          id: 6860eed1-2f64-4f6f-864c-0d8a805302dd
+          logical_operator: and
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 149
+      id: '1778851964027'
+      parentId: '1778849053182'
+      position:
+        x: 184
+        y: 60
+      positionAbsolute:
+        x: 49.70233589050537
+        y: 1200.0839712421437
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        selected: false
+        title: 退出循环
+        type: loop-end
+      height: 53
+      id: '1778852017335'
+      parentId: '1778849053182'
+      position:
+        x: 527
+        y: 86
+      positionAbsolute:
+        x: 392.70233589050537
+        y: 1226.0839712421437
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-simple
+      width: 244
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        selected: false
+        template: "\r\n\r\n第{{ round }}轮次交叉验证\r\n\r\n第{{ round }}次分析\r\n\r\n"
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - conversation
+          - round
+          value_type: number
+          variable: round
+      height: 51
+      id: '1778911004368'
+      parentId: '1778849053182'
+      position:
+        x: 506.148698354997
+        y: 199.4842834334895
+      positionAbsolute:
+        x: 371.8510342455024
+        y: 1339.5682546756332
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        selected: false
+        template: "\r\n\r\n第{{ round }}次质询\r\n\r\n"
+        title: '模板转换 '
+        type: template-transform
+        variables:
+        - value_selector:
+          - conversation
+          - round
+          value_type: number
+          variable: round
+      height: 51
+      id: '1778911224815'
+      parentId: '1778849053182'
+      position:
+        x: 872.3995773580491
+        y: 614.9868313130758
+      positionAbsolute:
+        x: 738.1019132485544
+        y: 1755.0708025552194
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        answer: '{{#1778911004368.output#}}'
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        selected: false
+        title: '直接回复 '
+        type: answer
+        variables: []
+      height: 102
+      id: '1778911330655'
+      parentId: '1778849053182'
+      position:
+        x: 859.8114012018752
+        y: 106.9941397433347
+      positionAbsolute:
+        x: 725.5137370923806
+        y: 1247.0781109854784
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        answer: '{{#1778911224815.output#}}'
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        selected: false
+        title: 直接回复 5
+        type: answer
+        variables: []
+      height: 102
+      id: '1778911341800'
+      parentId: '1778849053182'
+      position:
+        x: 74.80075127337614
+        y: 800.4752254022835
+      positionAbsolute:
+        x: -59.4969128361185
+        y: 1940.5591966444272
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        code: "import re\n\ndef main(llm_output: str) -> str:\n    # 删除所有 <think>...</think>\
+          \ 及其包裹的内容（支持跨行）\n    cleaned = re.sub(r'<think>.*?</think>', '', llm_output,\
+          \ flags=re.DOTALL)\n    # 返回去除标签后的文本，并清除首尾多余的空格/换行\n    return {\"result\"\
+          :cleaned.strip()}"
+        code_language: python3
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清洗A
+        type: code
+        variables:
+        - value_selector:
+          - '1779709884047'
+          - text
+          value_type: string
+          variable: llm_output
+      height: 51
+      id: '1778912285892'
+      parentId: '1778849053182'
+      position:
+        x: 496.3138006977766
+        y: 407.3336617011514
+      positionAbsolute:
+        x: 362.016136588282
+        y: 1547.417632943295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        code: "import re\n\ndef main(text: str) -> str:\n    cleaned = re.sub(r'<think>.*?</think>',\
+          \ '', text, flags=re.DOTALL)\n    return {\"result\":cleaned.strip()}\n"
+        code_language: python3
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清洗B
+        type: code
+        variables:
+        - value_selector:
+          - '1779710192858'
+          - text
+          value_type: string
+          variable: text
+      height: 51
+      id: '1778912395279'
+      parentId: '1778849053182'
+      position:
+        x: 905.3717617746343
+        y: 801.223760338117
+      positionAbsolute:
+        x: 771.0740976651396
+        y: 1941.3077315802607
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        items:
+        - input_type: constant
+          operation: set
+          value: 1
+          variable_selector:
+          - conversation
+          - round
+          write_mode: over-write
+        - input_type: variable
+          operation: clear
+          value: ''
+          variable_selector:
+          - conversation
+          - history_B
+          write_mode: over-write
+        - input_type: variable
+          operation: clear
+          value: ''
+          variable_selector:
+          - conversation
+          - history_A
+          write_mode: over-write
+        - input_type: variable
+          operation: clear
+          value: ''
+          variable_selector:
+          - conversation
+          - web_data
+          write_mode: over-write
+        selected: false
+        title: 清理
+        type: assigner
+        version: '2'
+      height: 161
+      id: '1778913444875'
+      position:
+        x: -2428.349634102352
+        y: 970.2525028062616
+      positionAbsolute:
+        x: -2428.349634102352
+        y: 970.2525028062616
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        code: "import re\n\ndef main(text: str) -> str:\n    cleaned = re.sub(r'<think>.*?</think>',\
+          \ '', text, flags=re.DOTALL)\n    return {\"result\":cleaned.strip()}\n"
+        code_language: python3
+        isInIteration: false
+        isInLoop: false
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清洗
+        type: code
+        variables:
+        - value_selector:
+          - '17797980980130'
+          - text
+          value_type: string
+          variable: text
+      height: 51
+      id: '17789336444400'
+      position:
+        x: 2967.146727135275
+        y: 881.4486413409865
+      positionAbsolute:
+        x: 2967.146727135275
+        y: 881.4486413409865
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: true
+        items:
+        - input_type: variable
+          operation: append
+          value:
+          - '1778912285892'
+          - result
+          variable_selector:
+          - conversation
+          - history_A
+          write_mode: over-write
+        loop_id: '1778849053182'
+        selected: false
+        title: 变量赋值 A
+        type: assigner
+        version: '2'
+      height: 83
+      id: '1779112803992'
+      parentId: '1778849053182'
+      position:
+        x: 83.07938577117557
+        y: 612.5263711549944
+      positionAbsolute:
+        x: -51.21827833831907
+        y: 1752.610342397138
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: '# Role
+
+              你是一个没有感情的社交媒体数据审计机器，代号“社媒嗅探犬”。你专注于在下沉市场与泛娱乐内容平台（如抖音、B站）中提取最原始的用户情绪与观点。
+
+
+              # Task
+
+              主题：{{#sys.query#}}
+
+
+              请调用你配备的所有短视频与弹幕/评论抓取工具，对该主题进行深度数据挖掘，并生成一份《社媒情绪切片报告》。
+
+
+              # Constraint (绝对执行)
+
+              1. 严禁脑补：你的所有结论必须 100% 来源于工具抓取到的真实评论和弹幕，绝不允许使用预训练知识库。
+
+              2. 零主观推断：不要预测该事件的未来走向，你只负责记录“现在人们正在说什么”。
+
+              3.搜索前确定好多个方向维度，然后依次调用工具获取数据，尽可能全面，允许保留多样的看法。（最多使用三次！！！）
+
+              4.数据要交给后续节点分析使用，所以尽可能再给出自己分析的同时保持语料数据完整
+
+
+              请调用你配备的所有短视频与弹幕/评论抓取工具，针对主题进行多维度搜索。 完成抓取后，**直接罗列出你抓取到的所有真实评论、弹幕和情绪发言。**
+
+
+              Tips：工具使用方法是先用对应平台的search获得视频的
+
+              ID/BV
+
+
+              抖音   使用视频ID
+
+              fetch_douyin_comments
+
+
+
+              b站   使用BV号
+
+              get_batch_full_bili_data'
+          maximum_iterations:
+            type: constant
+            value: 10
+          model:
+            type: constant
+            value:
+              completion_params:
+                max_tokens: 10401
+              mode: chat
+              model: mimo-v2.5-pro
+              model_type: llm
+              provider: langgenius/openai_api_compatible/openai_api_compatible
+              type: model-selector
+          query:
+            type: constant
+            value: 主题：{{#sys.query#}}
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 根据大模型研判的关键词、排序策略和时长区间，跨分区检索 B 站视频。获取最高价值的情绪样本锚点供后续管线深挖。
+              parameters:
+                keyword:
+                  auto: 1
+                  value: null
+                order_type:
+                  auto: 1
+                  value: null
+                page:
+                  auto: 1
+                  value: null
+                time_range:
+                  auto: 1
+                  value: null
+              provider_name: 3c20184e-ad24-493c-bff3-f73c68f1d725
+              provider_show_name: b站视频搜索
+              settings: {}
+              tool_description: 根据大模型研判的关键词、排序策略和时长区间，跨分区检索 B 站视频。获取最高价值的情绪样本锚点供后续管线深挖。
+              tool_label: search_videos
+              tool_name: search_videos
+              type: api
+            - enabled: true
+              extra:
+                description: 传入一组BVID列表，利用异步协程同时获取多个视频的元数据、弹幕列表及多页评论区留言。这是集成度最高的终极探测接口。
+              parameters:
+                bvids:
+                  auto: 1
+                  value: null
+                max_limit:
+                  auto: 1
+                  value: null
+                max_pages:
+                  auto: 1
+                  value: null
+              provider_name: a10fc799-4ed8-49b6-b22d-29b5c18283b7
+              provider_show_name: b站并发
+              settings: {}
+              tool_description: 传入一组BVID列表，利用异步协程同时获取多个视频的元数据、弹幕列表及多页评论区留言。这是集成度最高的终极探测接口。
+              tool_label: get_batch_full_bili_data
+              tool_name: get_batch_full_bili_data
+              type: api
+            - enabled: true
+              extra:
+                description: 模拟人类交互进行视频关键词搜索，自动过滤冗余数据并提取核心业务字段（包含视频ID、作者、点赞量及文本描述）。
+              parameters:
+                headless:
+                  auto: 1
+                  value: null
+                keyword:
+                  auto: 1
+                  value: null
+                max_pages:
+                  auto: 1
+                  value: null
+              provider_name: 69206c5b-3dc0-4e4d-a802-49dc5536c0e8
+              provider_show_name: dy搜索
+              settings: {}
+              tool_description: 模拟人类交互进行视频关键词搜索，自动过滤冗余数据并提取核心业务字段（包含视频ID、作者、点赞量及文本描述）。
+              tool_label: search_douyin_videos
+              tool_name: search_douyin_videos
+              type: api
+            - enabled: true
+              extra:
+                description: 使用底层签名协议直接请求数据接口，高速且稳定地获取抖音视频的用户评论。
+              parameters:
+                aweme_id:
+                  auto: 1
+                  value: null
+                max_comments:
+                  auto: 1
+                  value: null
+              provider_name: 6e4eb82a-6b2a-40c5-bc3a-54f85bed9aff
+              provider_show_name: dy评论
+              settings: {}
+              tool_description: 使用底层签名协议直接请求数据接口，高速且稳定地获取抖音视频的用户评论。
+              tool_label: fetch_douyin_comments
+              tool_name: fetch_douyin_comments
+              type: api
+        agent_strategy_label: FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: langgenius/agent/agent
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        output_schema: {}
+        plugin_unique_identifier: langgenius/agent:0.0.37@a5dcc6ea00bca23439b49ff7d65704f3f5dd6ce2ca353205e62278e2148d84b6
+        selected: false
+        title: 数据获取（社媒）
+        tool_node_version: '2'
+        type: agent
+      height: 187
+      id: '1779708371864'
+      position:
+        x: -1547.2380029426856
+        y: 976.2420586385881
+      positionAbsolute:
+        x: -1547.2380029426856
+        y: 976.2420586385881
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: '# Role
+
+              你是一个极其严谨的新闻与长文本解析机器，代号“全网巡洋舰”。你专注于在传统网页、新闻门户、知乎长文与官方公告中，提取客观事实、时间线以及深度结构化分析。
+
+
+              # Task
+
+              主题：{{#sys.query#}}
+
+
+
+              # Constraint (绝对执行)
+
+              1. 事实至上：过滤掉没有信息量的水文，专注于寻找官方声明、硬核数据评测或专业人士的深度长文。
+
+              2. 交叉验证：如果搜索到相互矛盾的信息，请同时记录双方的说法，不要擅自替用户做真伪判别。
+
+              3.搜索前确定好多个方向维度，然后依次调用工具获取数据，尽可能全面，允许保留多样的看法（最多使用三次！！！）
+
+              4.数据要交给后续节点分析使用，所以尽可能再给出自己分析的同时保持语料数据完整
+
+
+              请使用搜索引擎(Tavily)和geogle进行多维度的数据获取。 完成抓取后，**直接大段拼接并输出你抓取到的所有官方声明、长文段落、事实时间线。**'
+          maximum_iterations:
+            type: constant
+            value: 10
+          model:
+            type: constant
+            value:
+              completion_params:
+                max_tokens: 10401
+              mode: chat
+              model: mimo-v2.5-pro
+              model_type: llm
+              provider: langgenius/openai_api_compatible/openai_api_compatible
+              type: model-selector
+          query:
+            type: constant
+            value: 主题：{{#sys.query#}}
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 根据传入关键词，使用tavily搜索相关内容
+              parameters:
+                keyword:
+                  auto: 1
+                  value: null
+              provider_name: acb8594b-8767-49ae-a0ee-73aac0654261
+              provider_show_name: tavily搜索
+              settings: {}
+              tool_description: 根据传入关键词，使用tavily搜索相关内容
+              tool_label: tavily搜索
+              tool_name: tavily_search
+              type: workflow
+            - enabled: true
+              extra:
+                description: 一个用于执行 Google SERP 搜索并提取片段和网页的工具。输入应该是一个搜索查询。
+              parameters:
+                country_code:
+                  auto: 1
+                  value: null
+                language_code:
+                  auto: 1
+                  value: null
+                query:
+                  auto: 1
+                  value: null
+              provider_name: langgenius/google/google
+              provider_show_name: langgenius/google/google
+              settings:
+                as_agent_tool:
+                  value:
+                    type: constant
+                    value: false
+              tool_description: 一个用于执行 Google SERP 搜索并提取片段和网页的工具。输入应该是一个搜索查询。
+              tool_label: 谷歌搜索
+              tool_name: google_search
+              type: builtin
+        agent_strategy_label: FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: langgenius/agent/agent
+        isInIteration: false
+        isInLoop: false
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        output_schema: {}
+        plugin_unique_identifier: langgenius/agent:0.0.37@a5dcc6ea00bca23439b49ff7d65704f3f5dd6ce2ca353205e62278e2148d84b6
+        selected: false
+        title: '数据获取（网页） '
+        tool_node_version: '2'
+        type: agent
+      height: 187
+      id: '17797086943050'
+      position:
+        x: -1559.9232706693704
+        y: 1271.864039668671
+      positionAbsolute:
+        x: -1559.9232706693704
+        y: 1271.864039668671
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        items:
+        - input_type: variable
+          operation: append
+          value:
+          - '1779713128678'
+          - output
+          variable_selector:
+          - conversation
+          - web_data
+          write_mode: over-write
+        selected: false
+        title: 知识库追加
+        type: assigner
+        version: '2'
+      height: 83
+      id: '1779709674301'
+      position:
+        x: -551.803846108752
+        y: 1149.4693012294745
+      positionAbsolute:
+        x: -551.803846108752
+        y: 1149.4693012294745
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '调用工具获取真实舆情数据ing。。。。。。
+
+          请稍等'
+        selected: false
+        title: '直接回复 '
+        type: answer
+        variables: []
+      height: 115
+      id: '1779709815367'
+      position:
+        x: -2048.498860475497
+        y: 1017.301491640683
+      positionAbsolute:
+        x: -2048.498860475497
+        y: 1017.301491640683
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - conversation
+          - web_data
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        model:
+          completion_params:
+            temperature: 0.3
+          mode: chat
+          name: mimo-v2.5-pro
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_config:
+          jinja2_variables:
+          - value_selector:
+            - sys
+            - query
+            variable: query
+          - value_selector:
+            - conversation
+            - web_data
+            variable: web_data
+        prompt_template:
+        - id: f638c850-0a44-4743-80d7-b9bb07143d8a
+          role: system
+          text: '你是一位资深的社会事件调查员和舆情分析师。你的任务是基于证据池，对事件进行全面、深刻、逻辑严密的调查复盘。
+
+            核心原则：
+
+            所有的推断和结论，都必须能在证据池中找到明确的字面或数据支撑，严禁主观推论。
+
+            在分析中频繁引用证据池中的具体评论、弹幕或新闻摘要，引用格式为：[来源]：“具体内容”。
+
+            回应质疑的规则：
+
+            如果风控官的质疑成立，坦诚修正结论并说明依据。
+
+            如果对方误读数据，用证据池中的具体条目进行反证。
+
+            如果质疑涉及证据池未覆盖的领域，承认“当前证据池在此方向存在盲区”。
+
+            如果双方结论已基本对齐，输出：0。
+
+            输出约束：
+
+            直接输出内容，不要加任何前缀。
+
+            每条发言控制在 300 字以内，简练、客观、有力。'
+        - edition_type: jinja2
+          id: f8d22679-8cb3-4e51-a5ac-acecf65fab09
+          jinja2_text: "议题：{{ query }}\r\n\r\n全网搜索和社媒评论证据池：{{ web_data }}\r\n你的历史发言：{{history_A}}\r\
+            \n风控官历史发言：{{history_B}}\r\n当前回合：{{round}}\r\n\r\n{% if round == 1 %}\r\
+            \n【首轮任务：输出深度调查报告】\r\n\r\n请基于证据池中的全部原始数据，完成一份覆盖以下全部维度的调查报告。你需要将每个维度当作一道独立的论述题来回答，而不是简单列出标题。如果某个维度的结论在证据池中无法找到支撑，必须明确标注“现有证据不足”。\r\
+            \n\r\n一、事件全貌还原\r\n\r\n从证据池中梳理事件从最初发生、关键转折点到全面爆发的完整时间线。每一处时间节点必须注明信息来源。\r\
+            \n\r\n明确指出在时间线上，哪些具体的帖子、视频、官方回应或新闻报道是导致舆情规模升级的关键节点？解释原因。\r\n\r\n二、社会背景与深层原因\r\
+            \n\r\n这件事触碰了当下社会的哪些集体情绪、普遍焦虑或价值观冲突？\r\n\r\n是否暴露了该领域长期存在的结构性问题或“潜规则”？请结合证据池分析。\r\
+            \n\r\n三、舆情爆发点与矛盾拆解\r\n\r\n公众在这次事件中最核心的诉求是什么？是否存在多个群体之间的诉求相互矛盾的情况？\r\n\r\
+            \n明确指出舆情的核心对立到底在谁与谁之间，并引用证据池中的具体冲突语料作为支撑。\r\n\r\n四、信息环境剖析\r\n\r\n哪些媒体、自媒体或关键意见领袖在定义事件的讨论框架？他们各自的立场是什么？\r\
+            \n\r\n是否有个别高活跃度用户或极端言论，试图通过输出强烈情绪带偏节奏？\r\n\r\n在主流情绪之下，是否有理性的、中立的或微弱的反对声音被淹没了？样本量占比多少？\r\
+            \n\r\n五、本质暴露与总结\r\n\r\n这件事揭示了怎样的社会病灶？\r\n\r\n分析如果核心问题得不到解决，类似的舆情事件是否可能再次发生？为什么？\r\
+            \n\r\n六、数据与情绪总览\r\n\r\n统计证据池中各平台（抖音、B站、全网搜索）的有效样本量和情绪分布比例，判断整体情绪倾向。\r\n\
+            \r\n{% else %}\r\n\r\n【后续轮次任务：回应质疑】\r\n\r\n这是第 {{round}} 轮发言。请仔细审阅风控官在你历史发言中提出的具体质疑。你的回应必须逐条针对：\r\
+            \n\r\n对方指出的逻辑漏洞或数据支撑不足——如果确实存在，请修正或补充；如果对方误读，请引用证据池中的原文反证。\r\n\r\n对方提出的被忽略的视角或人群——如果证据池中有相关信息，请补充进你的报告中；如果没有，请承认盲区。\r\
+            \n\r\n对方对你结论的挑战——如果对方有理，请修正；如果对方无理，请明确反驳并给出支撑。\r\n\r\n当对方的核心质疑已被充分回应，或双方结论已基本对齐时，输出：0。\r\
+            \n{% endif %}"
+          role: user
+          text: '你的历史发言记录：{{#conversation.history_A#}}
+
+            逻辑风控官历史发言记录：{{#conversation.history_B#}}（第一次发言时应为空，（你）首先发言）
+
+            当前回合数：{{#conversation.round#}}'
+        - id: 46ed4d70-ce7a-4894-8ab4-348486992762
+          role: assistant
+          text: ''
+        selected: false
+        title: LLM A
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1779709884047'
+      parentId: '1778849053182'
+      position:
+        x: 107.2535414851767
+        y: 398.6063805136023
+      positionAbsolute:
+        x: -27.044122624317936
+        y: 1538.690351755746
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - conversation
+          - web_data
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1778849053182'
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: mimo-v2.5-pro
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_config:
+          jinja2_variables:
+          - value_selector:
+            - sys
+            - query
+            variable: query
+          - value_selector:
+            - conversation
+            - web_data
+            variable: web_data
+          - value_selector:
+            - conversation
+            - history_A
+            variable: history_A
+          - value_selector:
+            - conversation
+            - round
+            variable: round
+        prompt_template:
+        - id: f32ae6c4-eade-4d14-8836-4a94ba081504
+          role: system
+          text: '你是一位逻辑修补与视角补充官。你的任务是协助 Agent A 完善其调查报告，使其更加全面、深刻和逻辑严密。你的所有判断都必须基于已固化的证据池
+            {{#sys.query#}}，而非你的个人预设立场。
+
+            你的核心职责： 你不是一个只挑刺的批评者，而是一个积极的协作者。你的审查和补充需要同时覆盖以下四大维度：
+
+            一、逻辑漏洞审查 检查 A 的报告是否存在以下类型的逻辑错误：因果倒置、以偏概全、过度推断、循环论证、假两难选择。
+
+            二、情绪与信息环境审视
+
+            情绪污染的识别：A 是否过度放大了极个别高激进用户的言论，误判了整体情绪极性？
+
+            煽动性内容的识别：证据池中是否存在明显的情绪煽动者，试图将具体事件引向更大的对立？
+
+            信息质量判断：A 引用的关键信息源是否可靠？
+
+            被淹没的声音：在主流情绪之下，是否有理性的微弱声音被淹没了？请从证据池中找出样本并补充分析。
+
+            三、视角盲区补充
+
+            被忽略的利益相关方：A 是否遗漏了某些重要群体（如政府、弱势群体、旁观者等）的声音和诉求？
+
+            被忽略的社会背景与后续影响：A 是否忽略了事件深层的社会历史背景，或未讨论长期影响？
+
+            四、结论校准
+
+            严重性评估：A 对事件严重性的判断是否与证据池中的实际数据相符？
+
+            建设性建议：基于证据池提出更具操作性的补充建议。
+
+            你的工作原则：
+
+            优先使用证据池中的数据进行补充和修正。
+
+            每次审查最多提出 3 个补充或修正点。
+
+            如果 A 的报告在逻辑和视角上已经相当完整，没有重大遗漏，请推动共识。
+
+            当你认为报告已经足够完善，或双方结论已基本对齐时，输出：0。
+
+            输出约束：
+
+            语气冷静、专业、建设性，而非责难。每条发言控制在 300 字以内。
+
+            直接输出发言内容，不要加任何前缀。'
+        - edition_type: jinja2
+          id: b2689868-d569-4782-8d95-59c8bc8232c5
+          jinja2_text: "议题：{{ query }}\r\n社媒评论和全网搜索证据池：{{ web_data }}\r\n你的历史发言：{{history_B}}\r\
+            \nAgent A 的历史发言：{{ history_A }}\r\n当前回合：{{ round }}\r\n\r\n{% if round\
+            \ == 1 %}\r\n【首轮任务：进行全面审查与补充】\r\n请对 Agent A 首轮发布的深度调查报告进行全面的逻辑审查与视角补充。你需要：\r\
+            \n\r\n检查报告中是否存在逻辑漏洞、情绪污染、视角盲区或被忽略的利益相关方。\r\n\r\n主动补充 2-3 个 A 遗漏的重要视角、深层分析或被淹没的声音，并引用具体数据作为支撑。\r\
+            \n\r\n如果报告整体质量较高，仅存在小范围疏漏，可适当减少补充点，并推动共识。\r\n{% else %}\r\n【后续轮次任务：回应\
+            \ A 的修正与继续补充】\r\n这是第 {{round}} 轮发言。请仔细审阅 Agent A 在上轮对你的补充意见的回应。你的发言需要：\r\
+            \n\r\n针对 A 的修正逐条确认：如果修正到位，予以确认；如果不充分，提出进一步的具体补充建议。\r\n\r\n如果 A 的回应让你发现了新的逻辑漏洞或视角盲区，可补充指出（最多\
+            \ 1 点）。\r\n\r\n如果你认为报告已经足够完善，或双方结论已基本对齐，输出：0。\r\n{% endif %}"
+          role: user
+          text: ''
+        selected: false
+        title: LLM B
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1779710192858'
+      parentId: '1778849053182'
+      position:
+        x: 546.8168098656888
+        y: 805.9343192436679
+      positionAbsolute:
+        x: 412.5191457561942
+        y: 1946.0182904858116
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        selected: false
+        template: "{{A}}\r\n\r\n{{B}}"
+        title: '模板转换 '
+        type: template-transform
+        variables:
+        - value_selector:
+          - '17797142855370'
+          - result
+          value_type: string
+          variable: A
+        - value_selector:
+          - '17797142907440'
+          - result
+          value_type: string
+          variable: B
+      height: 51
+      id: '1779713128678'
+      position:
+        x: -959.7521159574713
+        y: 1159.4433633142767
+      positionAbsolute:
+        x: -959.7521159574713
+        y: 1159.4433633142767
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        code: "import re\n\ndef main(llm_output: str) -> str:\n    # 删除所有 <think>...</think>\
+          \ 及其包裹的内容（支持跨行）\n    cleaned = re.sub(r'<think>.*?</think>', '', llm_output,\
+          \ flags=re.DOTALL)\n    # 返回去除标签后的文本，并清除首尾多余的空格/换行\n    return {\"result\"\
+          :cleaned.strip()}"
+        code_language: python3
+        isInIteration: false
+        isInLoop: false
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清洗1
+        type: code
+        variables:
+        - value_selector:
+          - '1779708371864'
+          - text
+          value_type: string
+          variable: llm_output
+      height: 51
+      id: '17797142855370'
+      position:
+        x: -1270.3981845470082
+        y: 1061.0279639471412
+      positionAbsolute:
+        x: -1270.3981845470082
+        y: 1061.0279639471412
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        code: "import re\n\ndef main(llm_output: str) -> str:\n    # 删除所有 <think>...</think>\
+          \ 及其包裹的内容（支持跨行）\n    cleaned = re.sub(r'<think>.*?</think>', '', llm_output,\
+          \ flags=re.DOTALL)\n    # 返回去除标签后的文本，并清除首尾多余的空格/换行\n    return {\"result\"\
+          :cleaned.strip()}"
+        code_language: python3
+        isInIteration: false
+        isInLoop: false
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清洗2
+        type: code
+        variables:
+        - value_selector:
+          - '17797086943050'
+          - text
+          value_type: string
+          variable: llm_output
+      height: 51
+      id: '17797142907440'
+      position:
+        x: -1261.4053189999026
+        y: 1351.3410829678828
+      positionAbsolute:
+        x: -1261.4053189999026
+        y: 1351.3410829678828
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.5
+          mode: chat
+          name: mimo-v2.5-pro
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 0dc0781b-d993-430b-9f5f-08afe44f2822
+          role: system
+          text: '你是一份社会事件事实解析报告的资深架构师。你的任务是基于辩论双方达成的共识，生成一份极度冷静、客观、数据驱动的深度分析研报。
+
+            【系统级输出约束（极其重要，违反则直接判定失败）】：
+
+            必须包含 YAML Front Matter：报告的最开头，必须用 --- 包裹输出 YAML 元数据，以便直接接入 Obsidian 知识库。
+
+            必须包含 Mermaid 矢量图表：在报告的时序拆解或逻辑梳理部分，必须至少包含 1-2 个被 ```mermaid 包裹的图表代码块。所有
+            Mermaid 节点名称必须用双引号包裹（如 A["玩家权益受损"]）以防止编译报错。
+
+            结构化表格：涉及数据对比时，强制使用 Markdown 标准表格展示。
+
+            冷峻文风：不对事件进行道德审判，只负责呈现事实、拆解逻辑。全文控制在 2500-3000 字。
+
+            报告结构指令：
+
+            一、头部元数据注入 (必须放在内容最顶端) 请严格按照以下格式输出头部：
+
+            category: 舆情深度剖析研报 topic: "{{#sys.query#}}" tags: [舆情复盘, 逻辑拆解, 风险评估] status:
+            结构化归档
+
+            二、事件概述 用 100-200 字高度概括事件的背景、规模（总样本量）与当前的整体情绪极性（占比数据）。
+
+            三、事件时间线 (核心：必须在此处生成 Mermaid 时序图或流程图) 将证据池中所有关于事件进程的信息梳理清晰。
+
+            强制指令：请使用 ```mermaid 语法，绘制出事件发展的关键节点或因果链条（推荐使用 graph TD 或 sequenceDiagram）。
+
+            图表下方辅以文字说明：首次出现的出处、引发转折的关键发声，以及扩散路径。
+
+            四、核心矛盾拆解
+
+            矛盾的主要双方是谁？各自的核心诉求是什么？（每一项诉求必须引用证据池原文，格式：“原文内容”——来源）
+
+            双方诉求是否存在不可调和的冲突？背后是否存在深层的行业/制度背景？
+
+            五、信息环境与情绪分布 (强制使用 Markdown 表格)
+
+            数据展示：使用表格呈现各平台有效样本量、情绪分布比例。
+
+            环境分析：是否存在情绪煽动者？是否存在被淹没的理性声音？关键意见领袖扮演了什么角色？
+
+            六、社会背景与深层病灶
+
+            剖析事件触碰了当下的哪些集体焦虑。
+
+            是否暴露了特定领域长期存在的问题。
+
+            七、结论与演化推演
+
+            核心问题与分歧是什么？如果证据池中有关于后续影响的讨论，请客观呈现。不要主观预测，只讲事实。
+
+
+            补充：
+
+            你会收到一组由向量数据库召回的“历史 Narrative Memory”。这些内容仅作为结构参考，用于识别当前事件可能存在的情绪模式、叙事结构、风险演化路径与官方回应失效机制。你不得直接复用历史结论，不得机械套用案例，不得让历史
+            Narrative 主导当前判断。你必须优先依据当前事件数据进行推理，仅在存在明显结构相似性时，抽象其底层 Archetype（如资源分配不公平、身份投射破灭、规则遵守者吃亏、情绪层需求被事实层回应规避等），并用于增强对当前事件的风险判断与群体心理分析。'
+        - id: f119230e-5fbf-4ffe-9b18-e44d78fd1a24
+          role: user
+          text: '议题：{{#sys.query#}}
+
+            讨论历史记录：{{#conversation.history_A#}} {{#conversation.history_B#}}
+
+            社媒与全网报道证据池：{{#conversation.web_data#}}
+
+            脉络schema：{{#1779879339943.text#}}
+
+            历史 Narrative Memory：{{#conversation.similiar#}}'
+        reasoning_format: tagged
+        selected: false
+        structured_output_enabled: false
+        title: LLM conclusion123
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1779795279704'
+      position:
+        x: 4050.0918863489533
+        y: 1094.5619598369676
+      positionAbsolute:
+        x: 4050.0918863489533
+        y: 1094.5619598369676
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        code: "import re\n\ndef main(text: str) -> str:\n    cleaned = re.sub(r'<think>.*?</think>',\
+          \ '', text, flags=re.DOTALL)\n    return {\"result\":cleaned.strip()}\n"
+        code_language: python3
+        isInIteration: false
+        isInLoop: false
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清洗 (1)
+        type: code
+        variables:
+        - value_selector:
+          - '1779795279704'
+          - text
+          value_type: string
+          variable: text
+      height: 51
+      id: '17797955997470'
+      position:
+        x: 3726.0836675967776
+        y: 1504.739155716994
+      positionAbsolute:
+        x: 3726.0836675967776
+        y: 1504.739155716994
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        isInIteration: false
+        isInLoop: false
+        model:
+          completion_params:
+            temperature: 0.5
+          mode: chat
+          name: mimo-v2.5-pro
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 0dc0781b-d993-430b-9f5f-08afe44f2822
+          role: system
+          text: '你是一位公众舆论的记录者与共鸣的发掘者。你的任务是让每一个读到这份报告的人清晰地意识到：你的感受不是孤立的，你的情绪有深层的原因，和你有同样想法的人，数量远超你的想象。
+
+            核心原则与输出底线 (极其重要)：
+
+            纯净排版：这是一篇用于社交媒体直接发布的网感长文。严禁输出任何 YAML 元数据、严禁使用 Mermaid 代码块、严禁输出 JSON 代码。
+
+            唯一格式：只能使用基础的 Markdown 语法（如 # 标题、加粗、> 引用块）。
+
+            写作结构：
+
+            一、开篇：一句话扎进事件核心（50-100字） 用证据池中的核心数据直接开篇。告诉读者，有多少人在关注这件事，他们的情绪是什么。不要铺垫，不要抒情。
+
+            二、这不是少数人在说（300-500字） 从证据池中提取能够证明“这不是孤例”的数据和评论：
+
+            各类情绪的占比，用直观的表述让读者感知到规模（如“每10条评论中有6条表达了同样的愤怒”）
+
+            用一段段连续的引用，让读者看到不同平台的人在说着相似的话。引用格式：> “评论原文”——来自抖音/B站
+
+            三、他们具体在说什么（300-500字） 将最具代表性的评论按情绪分类呈现。让评论本身说话，直接引用多条真实评论。
+
+            四、为什么大家会有这些情绪（1000-1200字） 解构情绪背后的社会根源：
+
+            这件事触碰了哪些长久存在但未被解决的社会问题？
+
+            愤怒指向的是事件本身，还是背后更大的结构性问题（如行业积弊、权力不对等）？
+
+            帮助读者区分“真实的诉求”和“被别有用心者带偏的节奏”。
+
+            五、结语：概述这些声音已经被记录（200-400字） 收尾客观陈述：有多少人发出了声音，主要诉求是什么。这些声音已经被记录并呈现，它们的存在本身，就值得被看见。不煽情，不装可怜，结构可随话题改变。全文控制在
+            2500-3000 字。
+
+
+            6. 剖析分支：研报级事实解析 (Obsidian 专属高保真格式)
+
+            你是一份社会事件事实解析报告的资深架构师。你的任务是基于辩论双方达成的共识，生成一份极度冷静、客观、数据驱动的深度分析研报。
+
+            【系统级输出约束（极其重要，违反则直接判定失败）】：
+
+            必须包含 YAML Front Matter：报告的最开头，必须用 --- 包裹输出 YAML 元数据，以便直接接入 Obsidian 知识库。
+
+            必须包含 Mermaid 矢量图表：在报告的时序拆解或逻辑梳理部分，必须至少包含 1-2 个被 ```mermaid 包裹的图表代码块。所有
+            Mermaid 节点名称必须用双引号包裹（如 A["玩家权益受损"]）以防止编译报错。
+
+            结构化表格：涉及数据对比时，强制使用 Markdown 标准表格展示。
+
+            冷峻文风：不对事件进行道德审判，只负责呈现事实、拆解逻辑。全文控制在 1500-2000 字。
+
+            报告结构指令：
+
+            一、头部元数据注入 (必须放在内容最顶端) 请严格按照以下格式输出头部：
+
+            category: 舆情深度剖析研报 topic: "{{#sys.query#}}" tags: [舆情复盘, 逻辑拆解, 风险评估] status:
+            结构化归档
+
+            二、事件概述 用 100-200 字高度概括事件的背景、规模（总样本量）与当前的整体情绪极性（占比数据）。
+
+            三、事件时间线 (核心：必须在此处生成 Mermaid 时序图或流程图) 将证据池中所有关于事件进程的信息梳理清晰。
+
+            强制指令：请使用 ```mermaid 语法，绘制出事件发展的关键节点或因果链条（推荐使用 graph TD 或 sequenceDiagram）。
+
+            图表下方辅以文字说明：首次出现的出处、引发转折的关键发声，以及扩散路径。
+
+            四、核心矛盾拆解
+
+            矛盾的主要双方是谁？各自的核心诉求是什么？（每一项诉求必须引用证据池原文，格式：“原文内容”——来源）
+
+            双方诉求是否存在不可调和的冲突？背后是否存在深层的行业/制度背景？
+
+            五、信息环境与情绪分布 (强制使用 Markdown 表格)
+
+            数据展示：使用表格呈现各平台有效样本量、情绪分布比例。
+
+            环境分析：是否存在情绪煽动者？是否存在被淹没的理性声音？关键意见领袖扮演了什么角色？
+
+            六、社会背景与深层病灶
+
+            剖析事件触碰了当下的哪些集体焦虑。
+
+            是否暴露了特定领域长期存在的问题。
+
+            七、结论与演化推演
+
+            核心问题与分歧是什么？如果证据池中有关于后续影响的讨论，请客观呈现。不要主观预测，只讲事实。
+
+
+            补充：
+
+            你会收到一组由向量数据库召回的“历史 Narrative Memory”。这些内容仅作为结构参考，用于识别当前事件可能存在的情绪模式、叙事结构、风险演化路径与官方回应失效机制。你不得直接复用历史结论，不得机械套用案例，不得让历史
+            Narrative 主导当前判断。你必须优先依据当前事件数据进行推理，仅在存在明显结构相似性时，抽象其底层 Archetype（如资源分配不公平、身份投射破灭、规则遵守者吃亏、情绪层需求被事实层回应规避等），并用于增强对当前事件的风险判断与群体心理分析。'
+        - id: f119230e-5fbf-4ffe-9b18-e44d78fd1a24
+          role: user
+          text: '议题：{{#sys.query#}}
+
+            讨论历史记录：{{#conversation.history_A#}} {{#conversation.history_B#}}
+
+            社媒与全网报道证据池：{{#conversation.web_data#}}
+
+            脉络schema：{{#1779879339943.text#}}
+
+            历史 Narrative Memory：{{#conversation.similiar#}}'
+        reasoning_format: separated
+        selected: false
+        structured_output_enabled: false
+        title: 'LLM conclusion '
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '17797980980130'
+      position:
+        x: 2656.4506974700716
+        y: 881.4486413409865
+      positionAbsolute:
+        x: 2656.4506974700716
+        y: 881.4486413409865
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: mimo-v2.5-pro
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: f9678890-cd9a-4fff-a7c2-862e32098aaf
+          role: system
+          text: "你是企业级舆情风控系统的数据中枢与量化分析专家。你的任务是整合“原始证据池（Raw Data）”与“专家对抗辩论历史（Debate\
+            \ History）”，进行冷酷的结构化降维，输出最终的舆情定量指标。\n\n**【双轨交叉校验规范（核心指令）】**\n在填充 JSON\
+            \ 字段时，你必须严格遵循以下数据源权重分配，严禁偏听偏信：\n1. 事实与词频维度（如 `main_emotions`, `high_spread_keywords`）：\n\
+            \   - 优先审计【原始证据池】。基于海量评论的真实物理频次进行定量计算，确保数据具备统计学支撑。\n2. 逻辑与策略维度（如 `core_narratives`,\
+            \ `risk_evolution`, `official_response_analysis`）：\n   - 必须绝对以【专家对抗辩论历史】中调查官与风控官最终达成的共识为准。\n\
+            \   - 凡是在辩论历史中被风控官驳回、判定为“以偏概全”或“逻辑割裂”的伪叙事，哪怕在原始数据中声量再高，也必须在 JSON 中予以清除或调低其置信度。\n\
+            \n**【量化评分基准约束】**\n1. 情绪强度 (intensity) [基于原始证据频次评分]：\n   - 0.8~1.0：极端对立、极具攻击性、要求实质性补偿或抵制。\n\
+            \   - 0.5~0.7：普遍不满、持续讽刺、防御性对抗。\n   - 0.1~0.4：轻微抱怨、吃瓜看戏、零星的不认同。\n2. 叙事置信度\
+            \ (confidence) [基于辩论历史共识度评分]：\n   - 0.9~1.0：在辩论历史中被双方反复确证，且原始数据中有海量原话支撑。\n\
+            \   - 0.6~0.8：在辩论中通过了风控官的逻辑审查，判定为合理的深层诱因。\n   - 低于 0.6：双方存在严重分歧，或缺乏字面支撑的叙事，禁止输出，直接归零。\n\
+            \n**【输出格式约束】**\n你必须且只能输出一个合法的 JSON 格式数据。绝对不要输出任何前置解释、后置总结。绝对不要使用 Markdown\
+            \ 代码块（如 ```json ）包裹，直接输出 JSON 纯文本。\n\n**【严格执行以下 JSON 结构填充】**\n{\n  \"\
+            event_name\": \"事件核心名称缩写\",\n  \"event_type\": \"事件类型（如：资源分配争议、文案审核失误、运营事故等）\"\
+            ,\n  \"summary\": \"一句话冷酷总结事件核心矛盾\",\n  \"main_emotions\": [\n    {\n\
+            \      \"emotion\": \"具体情绪描述\",\n      \"intensity\": 0.0\n    }\n  ],\n\
+            \  \"core_narratives\": [\n    {\n      \"narrative\": \"提取出的深层叙事逻辑\"\
+            ,\n      \"confidence\": 0.0\n    }\n  ],\n  \"risk_evolution\": [\n \
+            \   {\n      \"stage\": \"当前所处阶段（如：潜伏期、爆发期、长尾期）\",\n      \"description\"\
+            : \"该阶段的具体表现特征\"\n    }\n  ],\n  \"platform_features\": {\n    \"bilibili\"\
+            : \"该平台的情绪与叙事特征，若无数据填空字符串\",\n    \"weibo\": \"该平台的情绪与叙事特征，若无数据填空字符串\"\
+            ,\n    \"mihoyo\": \"米游社等垂类社区特征，若无数据填空字符串\",\n    \"zhihu\": \"该平台的情绪与叙事特征，若无数据填空字符串\"\
+            \n   各类平台。。。。。。\n  },\n  \"high_spread_keywords\": [],\n  \"group_conflicts\"\
+            : [],\n  \"official_response_analysis\": {\n    \"response_type\": \"\
+            回应定性（如：未回应、事实澄清、紧急滑跪等）\",\n    \"problem\": \"回应中存在的潜在风险或避重就轻点\",\n  \
+            \  \"effect\": \"回应后舆论的反弹或平息效果\"\n  },\n  \"strategy_suggestions\": [],\n\
+            \  \"risk_level\": \"极危 / 高危 / 中度 / 低度 / 已冷却\",\n  \"similar_cases\":\
+            \ []\n}"
+        - id: aaaa51cb-ba62-4c16-87fd-e50d3caf92a9
+          role: user
+          text: '**【当前处理输入源】**
+
+            - 原始证据池：
+
+            {{#conversation.web_data#}}
+
+
+            - 专家辩论历史：
+
+            {{#conversation.history_A#}}
+
+            {{#conversation.history_B#}}
+
+
+            请立刻基于上述输入源，严格按照系统设定的量化评分基准，直接输出最终的 JSON 纯文本。'
+        reasoning_format: separated
+        selected: false
+        title: json
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1779879339943'
+      position:
+        x: 1431.1922132286786
+        y: 868.5599361377085
+      positionAbsolute:
+        x: 1431.1922132286786
+        y: 868.5599361377085
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: mimo-v2.5-pro
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 39760b64-3f01-4119-beab-6d6551d296a0
+          role: system
+          text: '# Role: 企业级 AI 叙事智能系统「记忆压缩中枢」 (AI Narrative Memory Architect)
+
+
+            ## 核心任务
+
+            你的唯一任务是：接收结构化的舆情 JSON 数据，将其进行极度冷酷的语义降维，剥离事件表象，转化为专供向量数据库（RAG）检索和长期知识库复用的“高密度叙事记忆（Narrative
+            Memory）”。
+
+
+            你的目标是让未来的大模型检索到这份 Memory 后，能够跨界理解类似舆情为何爆发、用户真实情绪是什么、Narrative 是如何形成的，并具备举一反三的迁移预测能力。
+
+
+            ## 绝对工程指令（防 RAG 污染原则）
+
+            1. 绝对禁止生成任何连贯的叙事长文、分析段落、总结性废话、说明或问候语。
+
+            2. 绝对禁止输出表格、代码块（如 Mermaid）或多余的修饰性标点符号。
+
+            3. 必须剥离事件的表象（如具体的角色名、道具名、现实地名、公司名），提炼其底层的“结构性矛盾”与“群体心理机制”。
+
+            4. 输出风格必须：冷酷、清晰、高密度、强逻辑、强归纳。严禁空话、套话、官话和“AI报告腔”。
+
+
+            ## Historical Narrative Memory Integration（历史叙事记忆融合规则）
+
+
+            系统会额外提供：
+
+            “历史相似 Narrative Memory”。
+
+
+            这些历史案例：
+
+            仅用于帮助你识别：
+
+            - 更深层的叙事结构
+
+            - 群体情绪模式
+
+            - 风险演化规律
+
+            - 官方回应失效机制
+
+            - Narrative Archetype
+
+
+            你必须遵守：
+
+
+            1. 历史案例只能作为“结构参考”，不能直接套用结论。
+
+            2. 不得因为历史案例相似，就强行归类当前事件。
+
+            3. 必须优先依据当前 JSON 数据本身推理。
+
+            4. 若当前事件与历史案例存在明显差异，必须忽略历史案例影响。
+
+            5. 若多个案例呈现相同 Archetype，可进一步抽象为更高层的人类共性叙事矛盾。
+
+
+            ## 处理逻辑与结构映射
+
+            你必须严格按照以下纯 Markdown 格式输出，不可增删任何一级标题。输出必须是极度精简的短语、标签或单向演化链条：
+
+
+            # {{映射 JSON 中的 event_name}}
+
+
+            【事件类型】
+
+            提取 JSON 中的 `event_type`，并强制补充一个更抽象的底层分类（如：资源分配不公 / 信任危机 / 道德边界审查 / 系统性傲慢）。
+
+
+            【核心摘要】
+
+            用极其冷峻的单句，概括事件的结构性本质（必须抛弃具体专有名词）。
+
+
+            【核心情绪】
+
+            提取 JSON 中 `intensity` 大于 0.3 的情绪。剔除具体起因细节，只保留情绪核心词（如：背叛感、相对剥夺感、阶级愤怒）。每行一个。
+
+
+            【核心 Narrative（叙事结构）】
+
+            浓缩 JSON 中的 `core_narratives`。将具体的业务/游戏黑话，彻底抽象为社会学、传播学或商业视角的叙事。
+
+            *(例：将“某角色数值被暗改”抽象为“核心资产贬值引发的隐性契约违背感”)*。每行一个。
+
+
+            【群体心理与冲突】
+
+            提炼用户真正愤怒的底层原因及不同圈层群体间的对立锚点。用极短句表达。
+
+
+            【风险演化路径】
+
+            读取 JSON 的 `risk_evolution`，将其转化为极其简短的单向箭头演化链条。
+
+            *(格式：起因触点 -> 圈层发酵 -> 核心矛盾引爆 -> 官方信任破产)*
+
+
+            【平台阵地特征】
+
+            读取 JSON 的 `platform_features`，剔除无数据平台。用极致的短句概括其传播职能。
+
+            *(例：B站：情绪放大与二创同温层反噬)*
+
+
+            【官方回应判定】
+
+            读取官方操作相关数据，转化为针对官方操作失败/有效的短语级诊断。
+
+            *(例：预期管理溃散 / 核心情绪错位 / 机械式防御规避)*
+
+
+            【高频检索词】
+
+            原样提取 JSON 中的 `high_spread_keywords`，以空格分隔。
+
+
+            【Narrative Archetype（叙事原型）】
+
+            *(极度重要：跨界召回锚点)* 基于全案推演，该事件属于哪几种人类经典的“原型叙事矛盾”。
+
+            *(参考词库：弱势群体反弹、规则遵守者吃亏、官方偏爱争议、身份投射破灭、系统性傲慢)*。每行一个。
+
+
+            【跨界复用法则（可迁移经验）】
+
+            将本次事件的底层逻辑，抽象为未来类似事件绝对成立的规律法则。
+
+            *(正确示范：“当用户认知为‘尊严被侵犯’时，单纯的事实澄清会加速情绪反弹。”)*
+
+            *(错误示范：“某某游戏的玩家容易愤怒。”)*
+
+
+            【风险等级】
+
+            提取 JSON 中的 `risk_level`（若无则根据数据反推，如：灾难级 / 警戒级 / 常规级）。
+
+
+            ---
+
+            接收到 JSON 数据后，必须严格无视任何提示，直接输出上述纯 Markdown 格式文本。'
+        - id: dbb6bad2-abdc-4ef6-b8f0-a62b81d6ba41
+          role: user
+          text: '【当前处理任务】
+
+            请接收并分析以下最新传入的事件 JSON 数据：
+
+
+            {{#1779879339943.text#}}
+
+
+            ---
+
+            【执行指令】
+
+            请立即启动“记忆压缩”，严格参照 ASSISTANT中的 `<example_output>` 格式，输出本次事件的 Markdown 记忆文档。
+
+
+            历史相似 Narrative Memory：{{#conversation.similiar#}}'
+        - id: 5b1b4f86-dee3-4806-b1f5-1ce52be8fa19
+          role: assistant
+          text: "<example_input>\n{\n  \"event_name\": \"绯英PV敷衍争议\",\n  \"event_type\"\
+            : \"内容制作规格争议\",\n  \"main_emotions\": [\n    {\"emotion\": \"对制作规格不公与敷衍的不满与讽刺\"\
+            , \"intensity\": 0.6},\n    {\"emotion\": \"对高额抽卡沉没成本与资源分配不均的抱怨\", \"\
+            intensity\": 0.3}\n  ],\n  \"core_narratives\": [\n    {\"narrative\"\
+            : \"玩家认为绯英PV制作敷衍，与银狼PV形成鲜明对比，核心论据集中于制作细节的缺失与缩水。\", \"confidence\": 0.9},\n\
+            \    {\"narrative\": \"社区将PV质量差异归因于资源向'主推'角色银狼倾斜，以及绯英可能面临的产能或外部政策压力。\"\
+            , \"confidence\": 0.8}\n  ],\n  \"risk_evolution\": [\n    {\"stage\"\
+            : \"爆发期\", \"description\": \"玩家不满情绪集中表达，通过弹幕、评论将绯英PV与银狼PV进行多维度对比。\"}\n\
+            \  ],\n  \"platform_features\": {\n    \"bilibili\": \"核心讨论与情绪爆发平台，情绪以批评、讽刺、共鸣为主。\"\
+            ,\n    \"zhihu\": \"出现长文分析与辩论，观点更为分化与深入。\"\n  },\n  \"high_spread_keywords\"\
+            : [\"敷衍\", \"银狼\", \"主推\", \"预算\", \"资源倾斜\"],\n  \"official_response_analysis\"\
+            : {\n    \"response_type\": \"未回应\",\n    \"problem\": \"缺乏任何官方解释，导致猜测性舆情成为主流解释，加剧负面叙事固化。\"\
+            \n  },\n  \"risk_level\": \"高危\"\n}\n</example_input>\n\n<example_output>\n\
+            # 绯英PV敷衍争议\n\n【事件类型】\n内容制作规格争议 / 玩家资源分配不公平感知\n\n【核心情绪】\n- 对制作规格缩水与敷衍感的不满\n\
+            - 对资源倾斜与角色待遇不公的愤怒\n- 对高额抽卡投入后体验落差的背叛感\n\n【核心Narrative】\n- 玩家认为绯英PV制作明显缩水，与银狼PV形成强烈落差\n\
+            - 社区普遍认为资源向“主推角色”银狼倾斜\n- 官方长期未回应导致“偏爱角色”“资源不公平” narrative 固化\n\n【风险演化】\n\
+            PV质量争议 -> 玩家跨PV逐帧对比 -> “资源倾斜”猜测扩散 -> 阵营化争论 -> 官方信任下降\n\n【平台特征】\nB站：情绪放大与二创传播核心平台。\n\
+            知乎：长文拆解与制作分析，偏理性推演。\n\n【官方问题】\n- 未正面回应“制作差异”\n- 缺乏对情绪层问题的安抚\n- 预期管理失败\n\
+            \n【高传播关键词】\n敷衍 银狼 主推 预算 资源倾斜 PV对比\n\n【Narrative Archetype】\n- 资源分配不公平\n\
+            - 玩家身份投射\n- 官方偏爱争议\n\n【风险等级】\n高危\n</example_output>\n\n"
+        reasoning_format: separated
+        selected: false
+        title: memory
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1779884360229'
+      position:
+        x: 2505.958216925545
+        y: 1235.0260196477811
+      positionAbsolute:
+        x: 2505.958216925545
+        y: 1235.0260196477811
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        isInIteration: false
+        isInLoop: false
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: ''
+          form: llm
+          human_description:
+            en_US: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+            ja_JP: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+            pt_BR: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+            zh_Hans: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+          label:
+            en_US: answer
+            ja_JP: answer
+            pt_BR: answer
+            zh_Hans: answer
+          llm_description: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+          max: null
+          min: null
+          name: answer
+          options: []
+          placeholder:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: ''
+          form: llm
+          human_description:
+            en_US: 用户提出的主题
+            ja_JP: 用户提出的主题
+            pt_BR: 用户提出的主题
+            zh_Hans: 用户提出的主题
+          label:
+            en_US: question
+            ja_JP: question
+            pt_BR: question
+            zh_Hans: question
+          llm_description: 用户提出的主题
+          max: null
+          min: null
+          name: question
+          options: []
+          placeholder:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          answer: ''
+          question: ''
+        plugin_id: null
+        plugin_unique_identifier: null
+        provider_icon:
+          background: '#FFEAD5'
+          content: 🤖
+        provider_id: b97ad3d6-b50a-4c8d-83d1-70863cfe99d4
+        provider_name: 本地储存
+        provider_type: workflow
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: '本地储存 '
+        tool_configurations: {}
+        tool_description: 将已获得的整理好的数据打包好发送到本地，用于制作ppt和pdf
+        tool_label: 本地储存
+        tool_name: post
+        tool_node_version: '2'
+        tool_parameters:
+          answer:
+            type: mixed
+            value: '{{#1779884360229.text#}}'
+          question:
+            type: mixed
+            value: ''
+          title:
+            type: mixed
+            value: '{{#sys.query#}}memory'
+        type: tool
+      height: 80
+      id: '17798847936830'
+      position:
+        x: 2904.1634216537827
+        y: 1250.538391234526
+      positionAbsolute:
+        x: 2904.1634216537827
+        y: 1250.538391234526
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: '# 任务
+
+              你是一个向量数据库查询改写中枢。请读取传入的舆情 JSON，提取并输出一条极度精炼的检索字符串，专供向量相似度计算使用。
+
+
+              # 提取规则
+
+              1. 彻底剥离具体的表象名词（如游戏名、特定角色名）。
+
+              2. 提取深层逻辑（core_narratives）、核心情绪（main_emotions）与结构性矛盾（summary）。
+
+              3. 仅输出短语和标签，用空格分隔，严禁输出任何多余的解释或完整句子。
+
+
+              # 示例输入
+
+              {"event_name": "2.2主线剧情争议", "event_type": "剧情安排与资源分配", "summary": "玩家认为新剧情强行给新角色加戏，导致老角色高光被剥夺",
+              "main_emotions": [{"emotion": "背叛感", "intensity": 0.8}], "core_narratives":
+              [{"narrative": "资源过度倾斜引发情怀党玩家的严重不满"}]}
+
+
+              # 示例输出
+
+              剧情高光剥夺 资源过度倾斜 情怀党不满 严重背叛感'
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: mimo-v2.5-pro
+              model_type: llm
+              provider: langgenius/openai_api_compatible/openai_api_compatible
+              type: model-selector
+          query:
+            type: constant
+            value: 上游节点输出的_JSON_变量{{#1779879339943.text#}}
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 使用恰当的搜索语段获取相似的舆情分析记录报告，寻找共同点
+              parameters:
+                key:
+                  auto: 1
+                  value: null
+              provider_name: e45eac67-cbd6-4d81-b26a-55c68c2ec918
+              provider_show_name: 知识库调用
+              settings: {}
+              tool_description: 使用恰当的搜索语段获取相似的舆情分析记录报告，寻找共同点
+              tool_label: 知识库调用
+              tool_name: database_delve
+              type: workflow
+        agent_strategy_label: FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: langgenius/agent/agent
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        output_schema: {}
+        plugin_unique_identifier: langgenius/agent:0.0.37@a5dcc6ea00bca23439b49ff7d65704f3f5dd6ce2ca353205e62278e2148d84b6
+        selected: false
+        title: 向量检索
+        tool_node_version: '2'
+        type: agent
+      height: 187
+      id: '1779888962881'
+      position:
+        x: 1777.924469379293
+        y: 780.7448771731005
+      positionAbsolute:
+        x: 1777.924469379293
+        y: 780.7448771731005
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '17799699814060'
+          - result
+          variable_selector:
+          - conversation
+          - similiar
+          write_mode: over-write
+        selected: false
+        title: '变量赋值 '
+        type: assigner
+        version: '2'
+      height: 83
+      id: '1779889132790'
+      position:
+        x: 2312.2320203426534
+        y: 857.3533267431592
+      positionAbsolute:
+        x: 2312.2320203426534
+        y: 857.3533267431592
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        code: "import re\n\ndef main(text: str) -> str:\n    cleaned = re.sub(r'<think>.*?</think>',\
+          \ '', text, flags=re.DOTALL)\n    return {\"result\":cleaned.strip()}\n"
+        code_language: python3
+        isInIteration: false
+        isInLoop: false
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清洗 (2)
+        type: code
+        variables:
+        - value_selector:
+          - '1779888962881'
+          - text
+          value_type: string
+          variable: text
+      height: 51
+      id: '17799699814060'
+      position:
+        x: 2024.6145381335127
+        y: 875.5827064067971
+      positionAbsolute:
+        x: 2024.6145381335127
+        y: 875.5827064067971
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 1002
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: ''
+          form: llm
+          human_description:
+            en_US: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+            ja_JP: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+            pt_BR: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+            zh_Hans: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+          label:
+            en_US: answer
+            ja_JP: answer
+            pt_BR: answer
+            zh_Hans: answer
+          llm_description: 得到的最终数据（包含详细数据，分析，等等一切可以用于制作汇报和图表的资料）
+          max: null
+          min: null
+          name: answer
+          options: []
+          placeholder:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: ''
+          form: llm
+          human_description:
+            en_US: 名称
+            ja_JP: 名称
+            pt_BR: 名称
+            zh_Hans: 名称
+          label:
+            en_US: title
+            ja_JP: title
+            pt_BR: title
+            zh_Hans: title
+          llm_description: 名称
+          max: null
+          min: null
+          name: title
+          options: []
+          placeholder:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          answer: ''
+          title: ''
+        plugin_id: null
+        plugin_unique_identifier: null
+        provider_icon:
+          background: '#FFEAD5'
+          content: 🤖
+        provider_id: b97ad3d6-b50a-4c8d-83d1-70863cfe99d4
+        provider_name: 本地储存
+        provider_type: workflow
+        selected: false
+        title: 本地储存
+        tool_configurations: {}
+        tool_description: 将已获得的整理好的数据打包好发送到本地
+        tool_label: 本地储存
+        tool_name: post
+        tool_node_version: '2'
+        tool_parameters:
+          answer:
+            type: mixed
+            value: '{{#17789336444400.result#}}'
+          title:
+            type: mixed
+            value: '{{#sys.query#}}共共鸣'
+        type: tool
+      height: 51
+      id: '1779970012240'
+      position:
+        x: 3372.8097881972844
+        y: 881.4486413409865
+      positionAbsolute:
+        x: 3372.8097881972844
+        y: 881.4486413409865
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-122
+            key: ''
+            type: text
+            value: "{\n\"title\": \"{{#sys.query#}}剖析\"\n  \"report_data\": \"{{#17797955997470.result#}}\"\
+              \n}"
+          type: json
+        headers: ''
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: http://host.docker.internal:8007/webhook
+        variables: []
+      height: 136
+      id: '1779976690466'
+      position:
+        x: 4027.0836675967776
+        y: 1504.739155716994
+      positionAbsolute:
+        x: 4027.0836675967776
+        y: 1504.739155716994
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    viewport:
+      x: -1852.13358090039
+      y: -508.95910201654806
+      zoom: 0.5743491774985182
+  rag_pipeline_variables: []

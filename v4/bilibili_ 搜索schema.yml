@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+  title: Bilibili 投研雷达扫描工具
+  version: 1.0.0
+  description: 专为投研 Agent 设计的 B 站高价值视频初筛雷达。通过大模型动态传入关键词和排序策略，返回清洗后的 BVID 与标题列表，为后续的深度情绪分析提供精准锚点。
+servers:
+  #- url:  
+    description: Dify 容器化部署地址
+paths:
+  /api/bili/search_videos:
+    post:
+      summary: b站搜索视频 (投研雷达扫描)
+      description: 根据大模型研判的关键词、排序策略和时长区间，跨分区检索 B 站视频。获取最高价值的情绪样本锚点供后续管线深挖。
+      operationId: search_videos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyword:
+                  type: string
+                  description: 大模型决策后的搜索关键词，例如 "固态电池" 或 "小米汽车"。
+                order_type:
+                  type: string
+                  description: 排序策略。可选值：totalrank(综合排序，适用于宏观行业与长期趋势), pubdate(最新发布，适用于突发事件的应激反应), click(最多点击)。大模型需根据调研场景自主选择。
+                  enum: [totalrank, pubdate, click]
+                  default: totalrank
+                time_range:
+                  type: integer
+                  description: 时长筛选区间。默认传20（代表10-30分钟深度评测）。规则：10代表10分钟内，20代表10-30分钟，40代表30-60分钟，70代表60分钟以上。
+                  default: 20
+                page:
+                  type: integer
+                  description: 检索页码，默认 1 页即可覆盖核心头部情绪。
+                  default: 1
+              required:
+                - keyword
+      responses:
+        "200":
+          description: 成功返回结构化清洗后的 BVID 与标题列表。
