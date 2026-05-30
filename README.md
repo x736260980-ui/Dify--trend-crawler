@@ -120,6 +120,8 @@
 
 #向量检索召回示例
 <img width="2548" height="1169" alt="屏幕截图_30-5-2026_132827_localhost" src="https://github.com/user-attachments/assets/717c5232-806c-41d4-b3b4-8f7bb2bc6df6" />
+<img width="2549" height="1229" alt="屏幕截图_30-5-2026_132845_localhost" src="https://github.com/user-attachments/assets/8476a13b-c3ad-485b-a132-c42f9ed3512d" />
+（角色）资源分配不平衡，召回两个不同结果
 
 #剖析报告Obsidian储存
 <img width="2442" height="1303" alt="image" src="https://github.com/user-attachments/assets/84f37053-151e-4659-b27a-9366a6d44923" />
