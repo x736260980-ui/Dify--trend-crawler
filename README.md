@@ -113,7 +113,7 @@
 
 ---
 #双LLM交叉对话过程
-<img width="674" height="622" alt="screenshot-1780064989843" src="https://github.com/user-attachments/assets/e2b43c6f-7fef-4130-a915-17f73f778c20" />
+<img width="2560" height="1246" alt="image" src="https://github.com/user-attachments/assets/b00e79fc-7da7-478e-9e25-d89b785895eb" />
 
 #共鸣报告
 <img width="2372" height="1154" alt="屏幕截图_29-5-2026_223021_localhost" src="https://github.com/user-attachments/assets/d080645c-036b-4244-96f8-6d360b91bb72" />
@@ -122,7 +122,7 @@
 <img width="2548" height="1169" alt="屏幕截图_30-5-2026_132827_localhost" src="https://github.com/user-attachments/assets/717c5232-806c-41d4-b3b4-8f7bb2bc6df6" />
 
 #剖析报告Obsidian储存
-<img width="1845" height="1300" alt="屏幕截图 2026-05-30 132718" src="https://github.com/user-attachments/assets/73d01b69-1ce9-41ad-999d-d10e200a9283" />
+<img width="2442" height="1303" alt="image" src="https://github.com/user-attachments/assets/84f37053-151e-4659-b27a-9366a6d44923" />
 
 
 ## 🔑 核心设计解析
